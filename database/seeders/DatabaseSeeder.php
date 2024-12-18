@@ -29,5 +29,8 @@ class DatabaseSeeder extends Seeder
 
         // assign role to user
         $user->assignRole('admin');
+
+        $runSeeder = new CategorySeeder();
+        $runSeeder->run();
     }
 }

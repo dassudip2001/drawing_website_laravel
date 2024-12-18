@@ -27,7 +27,6 @@ $logout = function (Logout $logout) {
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
-
                     <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')"
                         wire:navigate>
                         {{ __('Category') }}
@@ -35,6 +34,14 @@ $logout = function (Logout $logout) {
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" wire:navigate>
                         {{ __('Posts') }}
                     </x-nav-link>
+
+                    <!-- <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')"
+                        wire:navigate>
+                        {{ __('Category') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" wire:navigate>
+                        {{ __('Posts') }}
+                    </x-nav-link> -->
 
                 </div>
             </div>
@@ -65,17 +72,7 @@ $logout = function (Logout $logout) {
                         </x-dropdown-link>
 
 
-                        @canany('admin')
-                        <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Users') }}
-                        </x-dropdown-link>
-                        <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Role') }}
-                        </x-dropdown-link>
-                        <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Permission') }}
-                        </x-dropdown-link>
-                        @endcanany
+
 
 
                         <!-- Authentication -->

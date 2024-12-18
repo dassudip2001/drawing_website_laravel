@@ -11,9 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <wireui:scripts />
 
-    <script src="//unpkg.com/alpinejs" defer></script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -33,12 +31,32 @@
 
         <!-- Page Content -->
         <main>
+            @if (\Session::has('success'))
+                <div class="text-green-600 pt-5 pl-5">
+                    <ul>
+                        <li>{!! \Session::get('success') !!}</li>
+                    </ul>
+                </div>
+            @endif
+            @if (\Session::has('error'))
+                <div class="text-green-600 pt-5 pl-5">
+                    <ul>
+                        <li>{!! \Session::get('error') !!}</li>
+                    </ul>
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="text-red-600  pt-5 pl-5">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             {{ $slot }}
         </main>
     </div>
-    @wireUiScripts
-
-    <script src="//unpkg.com/alpinejs" defer></script>
 </body>
 
 </html>
