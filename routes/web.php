@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -26,7 +29,7 @@ Route::get('category/{id}', [CategoryController::class, 'show'])
 Route::put('category/{id}', [CategoryController::class, 'update'])
     ->middleware(['auth'])
     ->name('category.update');
-Route::get('category/{id}', [CategoryController::class, 'destroy'])
+Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])
     ->middleware(['auth'])
     ->name('category.destroy');
 
@@ -46,4 +49,19 @@ Route::put('posts/{id}', [PostController::class, 'update'])
 Route::delete('posts/{id}', [PostController::class, 'destroy'])
     ->middleware(['auth'])
     ->name('posts.destroy');
+
+// user routes
+Route::get('users', [UserController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('users.index');
+
+// role routes
+Route::get('roles', [RoleController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('roles.index');
+// permission routes
+Route::get('permissions', [PermissionController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('permissions.index');
+
 require __DIR__ . '/auth.php';

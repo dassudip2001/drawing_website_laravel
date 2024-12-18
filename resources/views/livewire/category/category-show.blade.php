@@ -70,34 +70,20 @@ new class extends Component {
                                 </td>
                                 <td class="px-6 py-4 text-center">
                                     <!-- <div class="flex"> -->
-                                    <a href="#" onclick="confirmDelete({{ $category->id }})"
-                                        class="font-medium text-red-600 dark:text-red-500 hover:underline"
+                                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline"
                                         style="margin-right: 1rem;">
                                         Delete
                                     </a>
                                     <script>
-                                        function confirmDelete(id) {
-                                            if (confirm('Are you sure you want to delete this category?')) {
-                                                // Perform delete action here
-                                                console.log('Category deleted:', id);
-                                                deleteCategory(id);
-                                            }
-
-                                            function deleteCategory(categoryId) {
-                                                fetch(`/category/${categoryId}`, {
-                                                    method: 'GET',
-                                                    headers: {
-                                                        'X-CSRF-TOKEN': document.querySelector(
-                                                            'meta[name="csrf-token"]').getAttribute('content'),
-                                                        'Content-Type': 'application/json'
-                                                    },
-                                                }).then(response => {
-                                                    console.log("done");
-                                                }).catch(error => {
-                                                    console.log("error");
-                                                });
-                                            }
+                                    function confirmDelete(id) {
+                                        if (confirm('Are you sure you want to delete this category?')) {
+                                            // Perform delete action here
+                                            console.log('Category deleted:', id);
+                                            deleteCategory(id);
                                         }
+
+
+                                    }
                                     </script>
                                     <a href="{{ url('/category', $category->id) }}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
@@ -164,7 +150,6 @@ new class extends Component {
                     </div>
                 </div>
 
-                <!-- delete -->
                 <!-- Delete Confirmation Modal -->
                 <div id="delete-modal" tabindex="-1" aria-hidden="true"
                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -206,12 +191,7 @@ new class extends Component {
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
-
-        </
-            x-app-layout>
+    </x-app-layout>
 </div>

@@ -71,8 +71,15 @@ $logout = function (Logout $logout) {
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-
-
+                        <x-dropdown-link :href="route('users.index')" wire:navigate>
+                            {{ __('Users') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('roles.index')" wire:navigate>
+                            {{ __('Roles') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('permissions.index')" wire:navigate>
+                            {{ __('Permission') }}
+                        </x-dropdown-link>
 
 
                         <!-- Authentication -->
