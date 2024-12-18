@@ -10,7 +10,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
+    <wireui:scripts />
+    {{-- @livewireStyles --}}
+    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.7/dist/cdn.min.js"></script> --}}
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -31,7 +33,9 @@
     </div>
     </div>
 
-
+    {{-- @wireUiScripts
+    @livewireScripts --}}
+    {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
 </body>
 
 </html>

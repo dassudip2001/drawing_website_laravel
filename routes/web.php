@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -11,5 +13,13 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+// category routes
+Route::get('category', [CategoryController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('category.index');
 
-require __DIR__.'/auth.php';
+// post routes
+Route::get('posts', [PostController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('posts.index');
+require __DIR__ . '/auth.php';
