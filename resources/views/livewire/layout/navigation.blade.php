@@ -70,7 +70,7 @@ $logout = function (Logout $logout) {
                         <x-dropdown-link :href="route('profile')" wire:navigate>
                             {{ __('Profile') }}
                         </x-dropdown-link>
-
+                        @if(auth()->user()->hasRole('admin'))
                         <x-dropdown-link :href="route('users.index')" wire:navigate>
                             {{ __('Users') }}
                         </x-dropdown-link>
@@ -80,7 +80,7 @@ $logout = function (Logout $logout) {
                         <x-dropdown-link :href="route('permissions.index')" wire:navigate>
                             {{ __('Permission') }}
                         </x-dropdown-link>
-
+                        ` @endif
 
                         <!-- Authentication -->
                         <button wire:click="logout" class="w-full text-start">

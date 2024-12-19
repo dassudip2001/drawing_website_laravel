@@ -37,7 +37,10 @@ Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])
 Route::get('posts', [PostController::class, 'index'])
     ->middleware(['auth'])
     ->name('posts.index');
-Route::post('posts', [PostController::class, 'create'])
+Route::get('posts/create', [PostController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('posts.create');
+Route::post('posts', [PostController::class, 'store'])
     ->middleware(['auth'])
     ->name('posts.store');
 Route::get('posts/{id}', [PostController::class, 'show'])

@@ -28,11 +28,14 @@ new class extends Component {
                         <div class="flex justify-between">
                             <h2 class="text-2xl font-semibold">Category</h2>
                             <div>
+                                <!-- if the user have admin role other wish add category then show -->
+                                @if(auth()->user()->hasRole('admin') || auth()->user()->can('add category'))
                                 <button data-modal-target="default-modal" data-modal-toggle="default-modal"
                                     class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     type="button">
                                     Add New Category
                                 </button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -51,9 +54,13 @@ new class extends Component {
                                 <th scope="col" class="px-6 py-3">
                                     Date
                                 </th>
+                                <!-- check if user has admin or user have edit category or delete category then show -->
+                                @if(auth()->user()->hasRole('admin') || auth()->user()->can('delete category') ||
+                                auth()->user()->can('edit category'))
                                 <th scope="col" class="px-6 py-3 text-center">
                                     More
                                 </th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -69,11 +76,14 @@ new class extends Component {
                                     {{ $category->created_at->diffForHumans() }}
                                 </td>
                                 <td class="px-6 py-4 text-center">
-                                    <!-- <div class="flex"> -->
+                                    <!-- check user role has admin access or user have delete category then show -->
+                                    @if(auth()->user()->hasRole('admin') || auth()->user()->can('delete category'))
                                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline"
                                         style="margin-right: 1rem;">
                                         Delete
                                     </a>
+                                    @endif
+
                                     <script>
                                     function confirmDelete(id) {
                                         if (confirm('Are you sure you want to delete this category?')) {
@@ -81,13 +91,14 @@ new class extends Component {
                                             console.log('Category deleted:', id);
                                             deleteCategory(id);
                                         }
-
-
                                     }
                                     </script>
+                                    <!-- check user role has admin access or user have edit category then show -->
+                                    @if(auth()->user()->hasRole('admin') || auth()->user()->can('edit category'))
                                     <a href="{{ url('/category', $category->id) }}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    <!-- </div> -->
+
+                                    @endif
                                 </td>
                             </tr>
                         </tbody>
