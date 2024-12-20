@@ -77,9 +77,11 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        return view('post.edit');
+        $categories = Category::select('name', 'id')->get();
+        $post = Post::with('category', 'users')->find($id);
+        return view('post.edit', compact('categories', 'post'));
     }
 
     /**
@@ -95,7 +97,35 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category_id' => 'required|integer',
+            'image' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048',
+            'content' => 'nullable|string',
+        ]);
+
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+
+        try {
+            if ($request->hasFile('image')) {
+                $uploadedFile = $request->file('image');
+                if (!$uploadedFile->isValid()) {
+                    return redirect()->route('posts.index')->with('error', 'Invalid file upload.');
+                }
+
+                $uploadedFileUrl = Cloudinary::upload($uploadedFile->getRealPath())->getSecurePath();
+                $post->url = $uploadedFileUrl;
+                $post->public_path = $uploadedFileUrl;
+            }
+
+            $post->save();
+            return redirect()->route('posts.index')->with('success', 'Post updated successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('posts.index')->with('error', 'Post not updated. ' . $e->getMessage());
+        }
     }
 
     /**

@@ -52,6 +52,13 @@ Route::put('posts/{id}', [PostController::class, 'update'])
 Route::delete('posts/{id}', [PostController::class, 'destroy'])
     ->middleware(['auth'])
     ->name('posts.destroy');
+// publish and unpublish routes
+Route::post('post/{id}/publish', [PostController::class, 'publish'])
+    ->middleware(['auth'])
+    ->name('posts.publish');
+Route::post('post/{id}/unpublish', [PostController::class, 'unpublish'])
+    ->middleware(['auth'])
+    ->name('posts.unpublish');
 
 // details routes
 Route::get('details/{id}', [PostController::class, 'details'])
