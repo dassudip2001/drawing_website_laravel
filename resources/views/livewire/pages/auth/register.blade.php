@@ -5,6 +5,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 
 use function Livewire\Volt\layout;
 use function Livewire\Volt\rules;
@@ -16,6 +17,7 @@ state([
     'name' => '',
     'email' => '',
     'password' => '',
+
     'password_confirmation' => ''
 ]);
 
@@ -28,8 +30,11 @@ rules([
 $register = function () {
     $validated = $this->validate();
 
+    // $validated['uuid'] = Str::uuid();
+
     $validated['password'] = Hash::make($validated['password']);
 
+    $validated['uuid'] = Str::uuid();
 
 
     event(new Registered($user = User::create($validated)));
