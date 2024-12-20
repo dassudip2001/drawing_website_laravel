@@ -76,11 +76,14 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
-                                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
+                                        {{-- <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> --}}
                                         @if ($pst->is_published == 1)
-                                            <span class="text-green ">Published</span>
+                                            <span
+                                                class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Published</span>
                                         @else
-                                            <span class="text-red-500">Not Published</span>
+                                            <span
+                                                class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Not
+                                                Published</span>
                                         @endif
                                     </div>
                                 </td>
