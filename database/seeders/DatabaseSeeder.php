@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
 
         // create user
         $user = User::create([
+            'uuid' => Str::uuid(),
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('password'),

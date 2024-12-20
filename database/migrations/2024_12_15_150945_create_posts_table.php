@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title', 128)->index();
+
+            $table->string('accession_number')->nullable();
+
             $table->text('content')->nullable();
             $table->string('url')->nullable();
             $table->string('public_path')->nullable();

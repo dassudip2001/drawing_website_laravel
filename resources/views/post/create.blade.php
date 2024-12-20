@@ -67,6 +67,8 @@
                         </p>
                     </div>
 
+                    {{-- <x-cld-upload-button> Upload Files </x-cld-upload-button> --}}
+
                     {{-- Content --}}
                     <div class="mb-6">
                         <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

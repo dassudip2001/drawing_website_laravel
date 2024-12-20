@@ -53,6 +53,11 @@ Route::delete('posts/{id}', [PostController::class, 'destroy'])
     ->middleware(['auth'])
     ->name('posts.destroy');
 
+// details routes
+Route::get('details/{id}', [PostController::class, 'details'])
+    ->middleware(['auth'])
+    ->name('details.index');
+
 // user routes
 Route::get('users', [UserController::class, 'index'])
     ->middleware(['auth'])

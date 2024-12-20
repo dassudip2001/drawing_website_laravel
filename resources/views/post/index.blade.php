@@ -15,7 +15,6 @@
                             <!-- if the user have admin role other wish add category then show -->
                             {{-- @if (auth()->user()->hasRole('admin') || auth()->user()->can('add category')) --}}
                             <button wire:navigate href="{{ route('posts.create') }}"
-                                :active="request() - > routeIs('posts.index')"
                                 class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                 type="button">
                                 Add New Posts
@@ -51,37 +50,61 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        @foreach ($posts as $pst)
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <img class="w-10 h-10 rounded-full" src="{{ $pst->public_path }}"
+                                        alt="{{ $pst->title }}">
+                                    <div class="ps-3">
+                                        <div class="text-base font-semibold" wire:navigate
+                                            href="{{ route('details.index', $pst->id) }}">{{ $pst->title }}</div>
+                                        {{-- <div class="font-normal text-gray-500">neil.sims@flowbite.com</div> --}}
+                                    </div>
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $pst->users->name }}
+                                </td>
 
-                            <th scope="row"
-                                class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full"
-                                    src="https://ideogram.ai/assets/progressive-image/balanced/response/tmXltmfuR-GdZUCM7QH7Yg"
-                                    alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base font-semibold">Neil Sims</div>
-                                    <div class="font-normal text-gray-500">neil.sims@flowbite.com</div>
-                                </div>
-                            </th>
-                            <td class="px-6 py-4">
-                                React Developer
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                            </td>
-                        </tr>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        {{-- {{ $category->created_at->diffForHumans() }} --}}
+                                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
+                                        {{ $pst->created_at->diffForHumans() }}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
+                                        @if ($pst->is_published == 1)
+                                            <span class="text-green ">Published</span>
+                                        @else
+                                            <span class="text-red-500">Not Published</span>
+                                        @endif
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{-- @if (auth()->user()->hasRole('admin') || auth()->user()->can('delete category')) --}}
+                                    <livewire:delete-post :post="$pst" :key="$pst->id" />
+                                    {{-- @endif --}}
+
+
+                                    <!-- check user role has admin access or user have edit category then show -->
+                                    {{-- @if (auth()->user()->hasRole('admin') || auth()->user()->can('edit category')) --}}
+                                    <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                        wire:navigate href="{{ route('posts.show', $pst->id) }}">Edit</a>
+                                    {{-- @endif --}}
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        {{-- no record found --}}
+                        @if ($posts->isEmpty())
+                            <tr>
+                                <td colspan="5" class="text-center py-4 bg-white">No Record Found</td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
