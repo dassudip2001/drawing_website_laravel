@@ -14,7 +14,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('users')->get();
+        $posts = Post::with('users')
+            ->where('user_id', auth()->id())
+            ->get();
+
+
+        // find all posts login user
+
         // foreach ($posts as $post) {
         //     $post->public_path = Cloudinary::getUrl($post->public_path, ['width' => 276, 'height' => 276, 'crop' => 'fill']);
         // }
