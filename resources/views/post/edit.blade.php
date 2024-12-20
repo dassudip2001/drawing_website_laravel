@@ -102,8 +102,8 @@
                     </div>
 
                     {{-- Submit Buttons --}}
-                    <div class="flex justify-between">
-                        <button type="submit"
+                    <div class="flex justify-end items-end">
+                        <button type="submit" style="margin-right: 10px"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                             Update
                         </button>

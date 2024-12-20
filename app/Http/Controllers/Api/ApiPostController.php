@@ -11,7 +11,7 @@ class ApiPostController extends Controller
     public function index(Request $request)
     {
         $posts = Post::with('category', 'users')
-            ->where('is_published', 0)
+            ->where('is_published', 1)
             ->where('user_id', $request['user_id'])
             ->get();
         return response()->json(
