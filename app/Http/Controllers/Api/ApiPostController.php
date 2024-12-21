@@ -8,6 +8,21 @@ use Illuminate\Http\Request;
 
 class ApiPostController extends Controller
 {
+
+
+    public function getPosts()
+    {
+        $posts = Post::with('category', 'users')
+            ->where('is_published', 1)
+            ->get();
+        return response()->json(
+            [
+                'status' => 'Date fetched successfully',
+                'data' => $posts
+            ]
+        );
+    }
+
     public function index(Request $request)
     {
         $posts = Post::with('category', 'users')

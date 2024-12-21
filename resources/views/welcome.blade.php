@@ -4,262 +4,69 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Drowing Collection</title>
+    <title>{{ config('app.name', 'Drawing Application') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased font-sans">
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
-            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-            </a>
-            <button data-collapse-toggle="navbar-default" type="button"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M1 1h15M1 7h15M1 13h15" />
-                </svg>
-            </button>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul
-                    class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900">
-                    <li>
+<body class="font-sans text-gray-900 antialiased ">
 
-                        @if (Route::has('login'))
-                            <livewire:welcome.navigation />
-                        @endif
-                    </li>
+    {{-- Hero Section --}}
+    <div class="grid  w-full h-screen bg-slate-200">
 
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-
-    {{-- body --}}
-
-
-    <section class="py-24 px-6 lg:px-8">
-        <div class="mx-auto max-w-7xl">
-            <div class="flex items-center justify-between mb-12">
-                <div>
-                    <h2 class="text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                        Featured Works
-                    </h2>
-                    <p class="mt-2 text-lg text-gray-600 dark:text-gray-300">
-                        Handpicked masterpieces that inspire and captivate
-                    </p>
+        <div class="flex justify-center items-center h-full w-full">
+            <div class="text-center">
+                <div class="flex justify-center items-center mb-3">
+                    <img class=" " style="max-width: 20%" src="{{ asset('color-palette.svg') }}" alt="Icon"
+                        srcset="">
                 </div>
+                <h1 class="text-5xl font-bold text-black">Artistry Unleashed</h1>
+                <p class="text-lg text-gray-600 mt-4">
+                    Discover a world where imagination meets canvas, featuring extraordinary works <br />
+                    from talented artists around the globe.
+                </p>
+                {{-- buttons --}}
+                <div
+                    class="flex flex-col md:flex-row mt-8 justify-center items-center space-y-4 md:space-y-0 md:space-x-11">
 
-                <button type="button"
-                    class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
-                    <svg aria-hidden="true" class="w-6 h-5 me-2 -ms-1" viewBox="0 0 2405 2501" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_1512_1323)">
-                            <path d="M2278.79 1730.86L2133.62 2221.69L1848.64 2143.76L2278.79 1730.86Z" fill="#E4761B"
-                                stroke="#E4761B" stroke-width="5.94955" />
-                            <path d="M1848.64 2143.76L2123.51 1767.15L2278.79 1730.86L1848.64 2143.76Z" fill="#E4761B"
-                                stroke="#E4761B" stroke-width="5.94955" />
-                            <path
-                                d="M2065.2 1360.79L2278.79 1730.86L2123.51 1767.15L2065.2 1360.79ZM2065.2 1360.79L2202.64 1265.6L2278.79 1730.86L2065.2 1360.79Z"
-                                fill="#F6851B" stroke="#F6851B" stroke-width="5.94955" />
-                            <path
-                                d="M1890.29 1081.17L2285.34 919.338L2265.7 1007.99L1890.29 1081.17ZM2253.21 1114.48L1890.29 1081.17L2265.7 1007.99L2253.21 1114.48Z"
-                                fill="#763D16" stroke="#763D16" stroke-width="5.94955" />
-                            <path
-                                d="M2253.21 1114.48L2202.64 1265.6L1890.29 1081.17L2253.21 1114.48ZM2332.34 956.82L2265.7 1007.99L2285.34 919.338L2332.34 956.82ZM2253.21 1114.48L2265.7 1007.99L2318.65 1052.01L2253.21 1114.48Z"
-                                fill="#763D16" stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1542.24 2024.17L1641 2055.7L1848.64 2143.75L1542.24 2024.17Z" fill="#E2761B"
-                                stroke="#E2761B" stroke-width="5.94955" />
-                            <path
-                                d="M2202.64 1265.6L2253.21 1114.48L2296.64 1147.8L2202.64 1265.6ZM2202.64 1265.6L1792.71 1130.55L1890.29 1081.17L2202.64 1265.6Z"
-                                fill="#763D16" stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1987.86 617.696L1890.29 1081.17L1792.71 1130.55L1987.86 617.696Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M2285.34 919.338L1890.29 1081.17L1987.86 617.696L2285.34 919.338Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1987.86 617.696L2400.16 570.1L2285.34 919.338L1987.86 617.696Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M2202.64 1265.6L2065.2 1360.79L1792.71 1130.55L2202.64 1265.6Z" fill="#F6851B"
-                                stroke="#F6851B" stroke-width="5.94955" />
-                            <path d="M2382.31 236.33L2400.16 570.1L1987.86 617.696L2382.31 236.33Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M2382.31 236.33L1558.3 835.45L1547.59 429.095L2382.31 236.33Z" fill="#E2761B"
-                                stroke="#E2761B" stroke-width="5.94955" />
-                            <path d="M934.789 380.309L1547.59 429.095L1558.3 835.449L934.789 380.309Z" fill="#F6851B"
-                                stroke="#F6851B" stroke-width="5.94955" />
-                            <path d="M1792.71 1130.55L1558.3 835.449L1987.86 617.696L1792.71 1130.55Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1792.71 1130.55L2065.2 1360.79L1682.65 1403.04L1792.71 1130.55Z" fill="#E4761B"
-                                stroke="#E4761B" stroke-width="5.94955" />
-                            <path d="M1682.65 1403.04L1558.3 835.449L1792.71 1130.55L1682.65 1403.04Z" fill="#E4761B"
-                                stroke="#E4761B" stroke-width="5.94955" />
-                            <path d="M1987.86 617.696L1558.3 835.45L2382.31 236.33L1987.86 617.696Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M940.144 2134.24L1134.69 2337.11L869.939 2096.16L940.144 2134.24Z" fill="#C0AD9E"
-                                stroke="#C0AD9E" stroke-width="5.94955" />
-                            <path d="M1848.64 2143.75L1940.86 1793.33L2123.51 1767.15L1848.64 2143.75Z" fill="#CD6116"
-                                stroke="#CD6116" stroke-width="5.94955" />
-                            <path d="M151.234 1157.92L487.978 803.917L194.666 1115.67L151.234 1157.92Z" fill="#E2761B"
-                                stroke="#E2761B" stroke-width="5.94955" />
-                            <path
-                                d="M2123.51 1767.15L1940.86 1793.33L2065.2 1360.79L2123.51 1767.15ZM1558.3 835.449L1230.48 824.74L934.789 380.309L1558.3 835.449Z"
-                                fill="#F6851B" stroke="#F6851B" stroke-width="5.94955" />
-                            <path d="M2065.2 1360.79L1940.86 1793.33L1930.74 1582.12L2065.2 1360.79Z" fill="#E4751F"
-                                stroke="#E4751F" stroke-width="5.94955" />
-                            <path d="M1682.65 1403.04L2065.2 1360.79L1930.74 1582.12L1682.65 1403.04Z" fill="#CD6116"
-                                stroke="#CD6116" stroke-width="5.94955" />
-                            <path d="M1230.48 824.74L1558.3 835.449L1682.65 1403.04L1230.48 824.74Z" fill="#F6851B"
-                                stroke="#F6851B" stroke-width="5.94955" />
-                            <path
-                                d="M1230.48 824.74L345.784 6.08252L934.79 380.309L1230.48 824.74ZM934.195 2258.58L165.513 2496.56L12.0146 1910.53L934.195 2258.58Z"
-                                fill="#E4761B" stroke="#E4761B" stroke-width="5.94955" />
-                            <path d="M265.465 1304.27L555.803 1076.41L799.14 1132.93L265.465 1304.27Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M799.139 1132.93L555.803 1076.41L686.098 538.567L799.139 1132.93Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M194.666 1115.67L555.803 1076.41L265.465 1304.27L194.666 1115.67Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1930.74 1582.12L1780.81 1506.56L1682.65 1403.04L1930.74 1582.12Z" fill="#CD6116"
-                                stroke="#CD6116" stroke-width="5.94955" />
-                            <path d="M194.666 1115.67L169.083 980.618L555.803 1076.41L194.666 1115.67Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1749.88 1676.72L1780.81 1506.56L1930.74 1582.12L1749.88 1676.72Z" fill="#233447"
-                                stroke="#233447" stroke-width="5.94955" />
-                            <path d="M1940.86 1793.33L1749.88 1676.72L1930.74 1582.12L1940.86 1793.33Z" fill="#F6851B"
-                                stroke="#F6851B" stroke-width="5.94955" />
-                            <path
-                                d="M555.803 1076.41L169.082 980.618L137.55 866.982L555.803 1076.41ZM686.098 538.567L555.803 1076.41L137.55 866.982L686.098 538.567ZM686.098 538.567L1230.48 824.74L799.139 1132.93L686.098 538.567Z"
-                                fill="#763D16" stroke="#763D16" stroke-width="5.94955" />
-                            <path
-                                d="M799.14 1132.93L1230.48 824.74L1422.65 1411.96L799.14 1132.93ZM1422.65 1411.96L826.508 1399.47L799.14 1132.93L1422.65 1411.96Z"
-                                fill="#E4761B" stroke="#E4761B" stroke-width="5.94955" />
-                            <path
-                                d="M265.465 1304.27L799.14 1132.93L826.508 1399.47L265.465 1304.27ZM1682.65 1403.04L1422.65 1411.96L1230.48 824.74L1682.65 1403.04Z"
-                                fill="#F6851B" stroke="#F6851B" stroke-width="5.94955" />
-                            <path d="M1780.81 1506.56L1749.88 1676.72L1682.65 1403.04L1780.81 1506.56Z" fill="#CD6116"
-                                stroke="#CD6116" stroke-width="5.94955" />
-                            <path d="M345.784 6.08252L1230.48 824.74L686.098 538.567L345.784 6.08252Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M12.0146 1910.53L758.088 1879.59L934.195 2258.58L12.0146 1910.53Z" fill="#E4761B"
-                                stroke="#E4761B" stroke-width="5.94955" />
-                            <path d="M934.194 2258.58L758.088 1879.59L1124.58 1861.75L934.194 2258.58Z" fill="#CD6116"
-                                stroke="#CD6116" stroke-width="5.94955" />
-                            <path
-                                d="M1749.88 1676.72L1940.86 1793.33L2046.16 2041.42L1749.88 1676.72ZM826.508 1399.47L12.0146 1910.53L265.465 1304.27L826.508 1399.47ZM758.088 1879.59L12.0146 1910.53L826.508 1399.47L758.088 1879.59ZM1682.65 1403.04L1731.43 1580.33L1495.83 1594.02L1682.65 1403.04ZM1495.83 1594.02L1422.65 1411.96L1682.65 1403.04L1495.83 1594.02Z"
-                                fill="#F6851B" stroke="#F6851B" stroke-width="5.94955" />
-                            <path d="M1134.69 2337.11L934.194 2258.58L1631.48 2375.79L1134.69 2337.11Z" fill="#C0AD9E"
-                                stroke="#C0AD9E" stroke-width="5.94955" />
-                            <path d="M265.465 1304.27L151.234 1157.91L194.666 1115.67L265.465 1304.27Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1710.61 2288.92L1631.48 2375.79L934.194 2258.58L1710.61 2288.92Z" fill="#D7C1B3"
-                                stroke="#D7C1B3" stroke-width="5.94955" />
-                            <path d="M1748.09 2075.93L934.194 2258.58L1124.58 1861.75L1748.09 2075.93Z" fill="#E4761B"
-                                stroke="#E4761B" stroke-width="5.94955" />
-                            <path d="M934.194 2258.58L1748.09 2075.93L1710.61 2288.92L934.194 2258.58Z" fill="#D7C1B3"
-                                stroke="#D7C1B3" stroke-width="5.94955" />
-                            <path
-                                d="M137.55 866.982L110.777 409.462L686.098 538.567L137.55 866.982ZM194.665 1115.67L115.536 1035.35L169.082 980.618L194.665 1115.67Z"
-                                fill="#763D16" stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1289.38 1529.76L1422.65 1411.96L1403.61 1699.92L1289.38 1529.76Z" fill="#CD6116"
-                                stroke="#CD6116" stroke-width="5.94955" />
-                            <path d="M1422.65 1411.96L1289.38 1529.76L1095.43 1630.31L1422.65 1411.96Z" fill="#CD6116"
-                                stroke="#CD6116" stroke-width="5.94955" />
-                            <path d="M2046.16 2041.42L2009.87 2014.65L1749.88 1676.72L2046.16 2041.42Z" fill="#F6851B"
-                                stroke="#F6851B" stroke-width="5.94955" />
-                            <path d="M1095.43 1630.31L826.508 1399.47L1422.65 1411.96L1095.43 1630.31Z" fill="#CD6116"
-                                stroke="#CD6116" stroke-width="5.94955" />
-                            <path d="M1403.61 1699.92L1422.65 1411.96L1495.83 1594.02L1403.61 1699.92Z" fill="#E4751F"
-                                stroke="#E4751F" stroke-width="5.94955" />
-                            <path d="M89.3589 912.199L137.55 866.982L169.083 980.618L89.3589 912.199Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1403.61 1699.92L1095.43 1630.31L1289.38 1529.76L1403.61 1699.92Z" fill="#233447"
-                                stroke="#233447" stroke-width="5.94955" />
-                            <path d="M686.098 538.567L110.777 409.462L345.784 6.08252L686.098 538.567Z" fill="#763D16"
-                                stroke="#763D16" stroke-width="5.94955" />
-                            <path d="M1631.48 2375.79L1664.2 2465.03L1134.69 2337.12L1631.48 2375.79Z" fill="#C0AD9E"
-                                stroke="#C0AD9E" stroke-width="5.94955" />
-                            <path d="M1124.58 1861.75L1095.43 1630.31L1403.61 1699.92L1124.58 1861.75Z" fill="#F6851B"
-                                stroke="#F6851B" stroke-width="5.94955" />
-                            <path d="M826.508 1399.47L1095.43 1630.31L1124.58 1861.75L826.508 1399.47Z" fill="#E4751F"
-                                stroke="#E4751F" stroke-width="5.94955" />
-                            <path
-                                d="M1495.83 1594.02L1731.43 1580.33L2009.87 2014.65L1495.83 1594.02ZM826.508 1399.47L1124.58 1861.75L758.088 1879.59L826.508 1399.47Z"
-                                fill="#F6851B" stroke="#F6851B" stroke-width="5.94955" />
-                            <path d="M1495.83 1594.02L1788.55 2039.64L1403.61 1699.92L1495.83 1594.02Z" fill="#E4751F"
-                                stroke="#E4751F" stroke-width="5.94955" />
-                            <path d="M1403.61 1699.92L1788.55 2039.64L1748.09 2075.93L1403.61 1699.92Z" fill="#F6851B"
-                                stroke="#F6851B" stroke-width="5.94955" />
-                            <path
-                                d="M1748.09 2075.93L1124.58 1861.75L1403.61 1699.92L1748.09 2075.93ZM2009.87 2014.65L1788.55 2039.64L1495.83 1594.02L2009.87 2014.65Z"
-                                fill="#F6851B" stroke="#F6851B" stroke-width="5.94955" />
-                            <path
-                                d="M2068.18 2224.07L1972.99 2415.05L1664.2 2465.03L2068.18 2224.07ZM1664.2 2465.03L1631.48 2375.79L1710.61 2288.92L1664.2 2465.03Z"
-                                fill="#C0AD9E" stroke="#C0AD9E" stroke-width="5.94955" />
-                            <path
-                                d="M1710.61 2288.92L1768.92 2265.72L1664.2 2465.03L1710.61 2288.92ZM1664.2 2465.03L1768.92 2265.72L2068.18 2224.07L1664.2 2465.03Z"
-                                fill="#C0AD9E" stroke="#C0AD9E" stroke-width="5.94955" />
-                            <path d="M2009.87 2014.65L2083.05 2059.27L1860.54 2086.04L2009.87 2014.65Z" fill="#161616"
-                                stroke="#161616" stroke-width="5.94955" />
-                            <path
-                                d="M1860.54 2086.04L1788.55 2039.64L2009.87 2014.65L1860.54 2086.04ZM1834.96 2121.15L2105.66 2088.42L2068.18 2224.07L1834.96 2121.15Z"
-                                fill="#161616" stroke="#161616" stroke-width="5.94955" />
-                            <path
-                                d="M2068.18 2224.07L1768.92 2265.72L1834.96 2121.15L2068.18 2224.07ZM1768.92 2265.72L1710.61 2288.92L1748.09 2075.93L1768.92 2265.72ZM1748.09 2075.93L1788.55 2039.64L1860.54 2086.04L1748.09 2075.93ZM2083.05 2059.27L2105.66 2088.42L1834.96 2121.15L2083.05 2059.27Z"
-                                fill="#161616" stroke="#161616" stroke-width="5.94955" />
-                            <path
-                                d="M1834.96 2121.15L1860.54 2086.04L2083.05 2059.27L1834.96 2121.15ZM1748.09 2075.93L1834.96 2121.15L1768.92 2265.72L1748.09 2075.93Z"
-                                fill="#161616" stroke="#161616" stroke-width="5.94955" />
-                            <path d="M1860.54 2086.04L1834.96 2121.15L1748.09 2075.93L1860.54 2086.04Z" fill="#161616"
-                                stroke="#161616" stroke-width="5.94955" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_1512_1323">
-                                <rect width="2404" height="2500" fill="white"
-                                    transform="translate(0.519043 0.132812)" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    View All
-                </button>
-            </div>
+                    <a type="button"
+                        class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2 mt-2">
+                        <svg class="w-5 h-5 mr-2 transition-transform group-hover:rotate-12"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M3 3v18h18" />
+                            <path d="M8 17V9" />
+                            <path d="M12 17V7" />
+                            <path d="M16 17v-5" />
+                        </svg>
+                        Explore Gallery
+                    </a>
+                    <a type="button" href="{{ route('register') }}"
+                        class="text-white bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 me-2 mb-2">
+                        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="6" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg>
+                        Submit Artwork
+                    </a>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {{-- {drawings.map((drawing) => (
-                    <div key={drawing.id}
-                        class="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-square overflow-hidden">
-                            <img src={drawing.image} alt={drawing.title}
-                                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                        </div>
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="absolute bottom-0 p-6 text-white">
-                                <h3 class="text-xl font-semibold mb-1">{drawing.title}</h3>
-                                <p class="text-sm text-gray-200">{drawing.artist}</p>
-                                <span
-                                    class="inline-block mt-2 px-3 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm rounded-full">
-                                    {drawing.category}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    ))} --}}
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+    {{-- gallery --}}
+
+    {{-- footer --}}
+
 </body>
 
 </html>

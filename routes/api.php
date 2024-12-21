@@ -18,3 +18,4 @@ Route::get('categories', [ApiCategoryController::class, 'index']);
 
 // posts
 Route::get('posts', [ApiPostController::class, 'index']);
+Route::get('posts/all', [ApiPostController::class, 'getPosts']);
