@@ -29,11 +29,11 @@ $logout = function (Logout $logout) {
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')"
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index','category.create','category.store','category.show')"
                         wire:navigate>
                         {{ __('Category') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" wire:navigate>
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index','posts.create','posts.store','posts.show')" wire:navigate>
                         {{ __('Posts') }}
                     </x-nav-link>
 

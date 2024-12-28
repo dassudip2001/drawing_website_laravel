@@ -75,12 +75,23 @@ new class extends Component {
                                 <td class="px-6 py-4">
                                     {{ $category->created_at->diffForHumans() }}
                                 </td>
-                                <td class="px-6 py-4 text-center">
+                                <td class="px-6 py-4 text-center flex justify-center items-center">
                                     <!-- check user role has admin access or user have delete category then show -->
                                     @if(auth()->user()->hasRole('admin') || auth()->user()->can('delete category'))
                                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline"
                                         style="margin-right: 1rem;">
-                                        Delete
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" class="lucide lucide-trash-2">
+                                                        <path d="M3 6h18" />
+                                                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                                        <line x1="10" x2="10" y1="11"
+                                                            y2="17" />
+                                                        <line x1="14" x2="14" y1="11"
+                                                            y2="17" />
+                                                            </svg>
                                     </a>
                                     @endif
 
@@ -96,7 +107,16 @@ new class extends Component {
                                     <!-- check user role has admin access or user have edit category then show -->
                                     @if(auth()->user()->hasRole('admin') || auth()->user()->can('edit category'))
                                     <a href="{{ url('/category', $category->id) }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-pencil">
+                                                    <path
+                                                        d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                                    <path d="m15 5 4 4" />
+                                                </svg>
+                                    </a>
 
                                     @endif
                                 </td>

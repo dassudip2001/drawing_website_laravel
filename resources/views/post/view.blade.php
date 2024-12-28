@@ -40,11 +40,11 @@
                 </div>
             </div>
             <div
-                class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-2">
+                class=" p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-2">
                 <div class="grid grid-cols-2">
                     {{-- col-1 --}}
                     <div>
-                        <div class="w-1/3">
+                        <div class="">
                             <div class="flex-1">
                                 <div>
                                     <p class="font-medium">Created By: {{ $post->users->name }}</p>
@@ -63,7 +63,7 @@
                     </div>
                     {{-- col-2 --}}
                     <div>
-                        <div class="w-72">
+                        <div class="">
                             <div
                                 class="border-2 border-dashed border-gray-300 rounded-lg h-72 flex items-center justify-center">
                                 <div class="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden">

@@ -31,14 +31,7 @@ class CategoryController extends Controller
         return view('category.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        // dd($request->all());
 
-    }
 
 
     /**
@@ -55,7 +48,13 @@ class CategoryController extends Controller
 
         try {
             $category->save();
-            return redirect()->route('category.index')->with('success', 'Category created successfully.');
+            flash()
+                ->options([
+                    'timeout' => 3000,
+                    'position' => 'bottom-right',
+                ])
+                ->success('Category created successfully.');
+            return redirect()->route('category.index');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -70,13 +69,7 @@ class CategoryController extends Controller
         return view('category.edit', compact('category'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -92,7 +85,13 @@ class CategoryController extends Controller
 
         try {
             $category->save();
-            return redirect()->route('category.index')->with('success', 'Category updated successfully.');
+            flash()
+                ->options([
+                    'timeout' => 3000,
+                    'position' => 'bottom-right',
+                ])
+                ->success('Category updated successfully.');
+            return redirect()->route('category.index');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -106,7 +105,13 @@ class CategoryController extends Controller
         try {
             $category = Category::findOrFail($id);
             $category->delete();
-            return redirect()->route('category.index')->with('success', 'Category deleted successfully.');
+            flash()
+                ->options([
+                    'timeout' => 3000,
+                    'position' => 'bottom-right',
+                ])
+                ->success('Category deleted successfully.');
+            return redirect()->route('category.index');
         } catch (\Throwable $th) {
             throw $th;
         }

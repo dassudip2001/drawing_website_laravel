@@ -82,4 +82,8 @@ Route::get('permissions', [PermissionController::class, 'index'])
     ->middleware(['auth'])
     ->name('permissions.index');
 
+
+// upload file route
+Route::post('upload-image', [\App\Http\Controllers\FileUploadController::class, 'upload'])->name('upload.image');
+
 require __DIR__ . '/auth.php';
