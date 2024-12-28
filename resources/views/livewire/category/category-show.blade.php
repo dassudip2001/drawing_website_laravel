@@ -29,7 +29,7 @@ new class extends Component {
                             <h2 class="text-2xl font-semibold">Category</h2>
                             <div>
                                 <!-- if the user have admin role other wish add category then show -->
-                                @if(auth()->user()->hasRole('admin') || auth()->user()->can('add category'))
+                                @if (auth()->user()->hasRole('admin') || auth()->user()->can('add category'))
                                 <button data-modal-target="default-modal" data-modal-toggle="default-modal"
                                     class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     type="button">
@@ -55,7 +55,7 @@ new class extends Component {
                                     Date
                                 </th>
                                 <!-- check if user has admin or user have edit category or delete category then show -->
-                                @if(auth()->user()->hasRole('admin') || auth()->user()->can('delete category') ||
+                                @if (auth()->user()->hasRole('admin') || auth()->user()->can('delete category') ||
                                 auth()->user()->can('edit category'))
                                 <th scope="col" class="px-6 py-3 text-center">
                                     More
@@ -67,7 +67,7 @@ new class extends Component {
                             @foreach ($categories as $category)
                             <tr class="bg-white border-b dark:bg-w ">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $category->name? $category->name : 'No Name' }}
+                                    {{ $category->name ? $category->name : 'No Name' }}
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $category->user->name ? $category->user->name : 'No Name' }}
@@ -77,47 +77,43 @@ new class extends Component {
                                 </td>
                                 <td class="px-6 py-4 text-center flex justify-center items-center">
                                     <!-- check user role has admin access or user have delete category then show -->
-                                    @if(auth()->user()->hasRole('admin') || auth()->user()->can('delete category'))
+                                    @if (auth()->user()->hasRole('admin') || auth()->user()->can('delete category'))
                                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline"
                                         style="margin-right: 1rem;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" class="lucide lucide-trash-2">
-                                                        <path d="M3 6h18" />
-                                                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                                                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                                                        <line x1="10" x2="10" y1="11"
-                                                            y2="17" />
-                                                        <line x1="14" x2="14" y1="11"
-                                                            y2="17" />
-                                                            </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-trash-2">
+                                            <path d="M3 6h18" />
+                                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                            <line x1="10" x2="10" y1="11" y2="17" />
+                                            <line x1="14" x2="14" y1="11" y2="17" />
+                                        </svg>
                                     </a>
                                     @endif
 
                                     <script>
-                                        function confirmDelete(id) {
-                                            if (confirm('Are you sure you want to delete this category?')) {
-                                                // Perform delete action here
-                                                console.log('Category deleted:', id);
-                                                deleteCategory(id);
-                                            }
+                                    function confirmDelete(id) {
+                                        if (confirm('Are you sure you want to delete this category?')) {
+                                            // Perform delete action here
+                                            console.log('Category deleted:', id);
+                                            deleteCategory(id);
                                         }
+                                    }
                                     </script>
                                     <!-- check user role has admin access or user have edit category then show -->
                                     @if(auth()->user()->hasRole('admin') || auth()->user()->can('edit category'))
                                     <a href="{{ url('/category', $category->id) }}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="lucide lucide-pencil">
-                                                    <path
-                                                        d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                                    <path d="m15 5 4 4" />
-                                                </svg>
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil">
+                                            <path
+                                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                            <path d="m15 5 4 4" />
+                                        </svg>
                                     </a>
-
                                     @endif
                                 </td>
                             </tr>
@@ -149,7 +145,7 @@ new class extends Component {
                                 </button>
                             </div>
                             <!-- Modal body -->
-                            <form action="{{route('category.store')}}" method="post">
+                            <form action="{{ route('category.store') }}" method="post">
                                 @csrf
                                 <div class="p-4 md:p-5 space-y-4">
                                     <div class="mb-6">

@@ -14,7 +14,7 @@
                         <div>
                             <!-- if the user have admin role other wish add category then show -->
                             {{-- @if (auth()->user()->hasRole('admin') || auth()->user()->can('add category')) --}}
-                            <a  href="{{ route('posts.create') }}"
+                            <a href="{{ route('posts.create') }}"
                                 class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                 type="button">
                                 Add New Posts
@@ -87,7 +87,7 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 flex justify-center">
                                     {{-- @if (auth()->user()->hasRole('admin') || auth()->user()->can('delete category')) --}}
                                     <livewire:delete-post :post="$pst" :key="$pst->id" />
                                     {{-- @endif --}}
@@ -96,7 +96,15 @@
                                     <!-- check user role has admin access or user have edit category then show -->
                                     {{-- @if (auth()->user()->hasRole('admin') || auth()->user()->can('edit category')) --}}
                                     <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                        wire:navigate href="{{ route('posts.show', $pst->id) }}">Edit</a>
+                                        wire:navigate href="{{ route('posts.show', $pst->id) }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil">
+                                            <path
+                                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                            <path d="m15 5 4 4" />
+                                        </svg>
+                                    </a>
                                     {{-- @endif --}}
 
                                 </td>
